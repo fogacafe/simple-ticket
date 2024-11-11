@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <AWSProjectType>Lambda</AWSProjectType>
+        <!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <!-- Generate ready to run images during publishing to improve cold start time. -->
+        <PublishReadyToRun>true</PublishReadyToRun>
+    </PropertyGroup>
+    <ItemGroup>
+      <None Remove="appsettings.dev.json" />
+      <None Remove="appsettings.json" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="appsettings.dev.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Include="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.2.0" />
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.1" />
+        <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="10.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Application\SimpleTicket.Application\SimpleTicket.Application.csproj" />
+      <ProjectReference Include="..\..\..\..\Infrastructure\CrossCutting\SimpleTicket.Infrastructure.Ioc\SimpleTicket.Infrastructure.Ioc.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.Logging.Debug" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include=".lambda-test-tool\SavedRequests\create-ticket-sqs-event.json" />
+    </ItemGroup>
+</Project>
