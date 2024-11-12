@@ -5,17 +5,17 @@ using Serilog;
 using Serilog.Exceptions;
 using Serilog.Settings.Configuration;
 using System.Reflection;
+using System.Diagnostics;
 
-namespace SimpleTicket.Infrastructure.Ioc.Container
+namespace SimpleTicket.Infrastructure.Ioc.Configurations
 {
     public static class LoggingConfiguration
     {
-        public static IServiceCollection AddLogs(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddLogs(this IServiceCollection services, IConfiguration configuration, string applicationName)
         {
 
             var options = new ConfigurationReaderOptions(typeof(ConsoleLoggerConfigurationExtensions).Assembly);
             var elasticAddress = configuration["Address:Elasticsearch"]!;
-
 
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
@@ -24,7 +24,7 @@ namespace SimpleTicket.Infrastructure.Ioc.Container
                 .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri(elasticAddress))
                 {
                     AutoRegisterTemplate = true,
-                    IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name}",
+                    IndexFormat = $"{applicationName}",
                     NumberOfReplicas = 1,
                     NumberOfShards = 2
                 })

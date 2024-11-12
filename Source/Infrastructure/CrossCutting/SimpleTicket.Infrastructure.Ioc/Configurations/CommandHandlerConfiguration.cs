@@ -3,13 +3,13 @@ using SimpleTicket.Application.Commands;
 using SimpleTicket.Application.Core.Tickets.Common;
 using SimpleTicket.Application.Core.Tickets.CreateTicket;
 
-namespace SimpleTicket.Infrastructure.Ioc.Container;
+namespace SimpleTicket.Infrastructure.Ioc.Configurations;
 
 public static class CommandHandlerConfiguration
 {
     public static IServiceCollection AddCommandHandlers(this IServiceCollection services)
     {
-        AddTicketCommandHandlers(services);
+        services.AddTicketCommandHandlers();
         return services;
     }
 

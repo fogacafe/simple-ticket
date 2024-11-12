@@ -1,5 +1,5 @@
 using SimpleTicket.Application.Core.Tickets.Common;
-using SimpleTicket.Infrastructure.Ioc.Container;
+using SimpleTicket.Infrastructure.Ioc.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 

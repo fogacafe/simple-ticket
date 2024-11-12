@@ -10,6 +10,7 @@ public class Container
     public readonly IConfiguration Configuration;
     private readonly string _environmentName;
     private ServiceProvider? _serviceProvider;
+
     public Container()
     {
         _environmentName = GetEnvironmentName();
