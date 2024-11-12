@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Exceptions;
 using Serilog.Settings.Configuration;
+using System.Reflection;
 
 namespace SimpleTicket.Infrastructure.Ioc.Container
 {
@@ -13,21 +14,17 @@ namespace SimpleTicket.Infrastructure.Ioc.Container
         {
 
             var options = new ConfigurationReaderOptions(typeof(ConsoleLoggerConfigurationExtensions).Assembly);
+            var elasticAddress = configuration["Address:Elasticsearch"]!;
+
 
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
                 .MinimumLevel.Information()
-                .Filter.ByExcluding(log =>
-                    log.Properties.ContainsKey("SourceContext") &&
-                    (
-                        log.Properties["SourceContext"].ToString().Contains("Microsoft")
-                    )
-                )
-                .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+                .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri(elasticAddress))
                 {
                     AutoRegisterTemplate = true,
-                    IndexFormat = $"notification-{DateTime.UtcNow:yyyy-MM}",
+                    IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name}",
                     NumberOfReplicas = 1,
                     NumberOfShards = 2
                 })
