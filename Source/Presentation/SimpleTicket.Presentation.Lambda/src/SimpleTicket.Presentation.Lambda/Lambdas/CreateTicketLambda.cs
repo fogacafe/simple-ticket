@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Serilog;
-using Serilog.Sinks.Elasticsearch;
 using SimpleTicket.Application.Core.Tickets.Common;
 using SimpleTicket.Application.Core.Tickets.CreateTicket;
 using SimpleTicket.Infrastructure.Ioc.Configurations;

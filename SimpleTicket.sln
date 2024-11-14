@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTicket.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTicket.Presentation.Lambda", "Source\Presentation\SimpleTicket.Presentation.Lambda\src\SimpleTicket.Presentation.Lambda\SimpleTicket.Presentation.Lambda.csproj", "{C45B44A1-BB95-446A-84F0-27EB7B52D6D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTicket.Infrastructure.Data", "Source\Infrastructure\Data\SimpleTicket.Infrastructure.Data\SimpleTicket.Infrastructure.Data.csproj", "{56744557-C48F-45D8-936A-A0BDF6103275}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{C45B44A1-BB95-446A-84F0-27EB7B52D6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C45B44A1-BB95-446A-84F0-27EB7B52D6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C45B44A1-BB95-446A-84F0-27EB7B52D6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56744557-C48F-45D8-936A-A0BDF6103275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56744557-C48F-45D8-936A-A0BDF6103275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56744557-C48F-45D8-936A-A0BDF6103275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56744557-C48F-45D8-936A-A0BDF6103275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{F0422166-A024-4594-9D28-CAF1A8960E02} = {5E9C8474-261F-466E-9C4F-EF4A56D4A7FE}
 		{25F9DE84-F3E0-45E8-BFEF-8A13B84F559A} = {B15C1B2C-0F64-4781-B893-E46734B77FDC}
 		{C45B44A1-BB95-446A-84F0-27EB7B52D6D5} = {5E9C8474-261F-466E-9C4F-EF4A56D4A7FE}
+		{56744557-C48F-45D8-936A-A0BDF6103275} = {55556225-6140-4575-B0C6-DA5B3F67EF18}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F6A0234-A624-4703-A19F-82FD7937E977}

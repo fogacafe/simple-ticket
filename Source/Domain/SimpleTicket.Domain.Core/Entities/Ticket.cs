@@ -21,6 +21,8 @@ namespace SimpleTicket.Domain.Core.Entities
             CreatorUsername = creatorUsername;
 
             Activities = [];
+
+            AddActivity(new Activity("Ticket was created"));
         }
 
         public Ticket()
@@ -38,6 +40,8 @@ namespace SimpleTicket.Domain.Core.Entities
             ResponsibleUsername = null;
             CreatorUsername = string.Empty;
             Activities = [];
+
+           
         }
 
         public string Summary { get; set; }
