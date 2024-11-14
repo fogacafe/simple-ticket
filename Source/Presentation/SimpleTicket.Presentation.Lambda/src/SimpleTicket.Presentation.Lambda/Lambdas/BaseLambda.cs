@@ -46,7 +46,8 @@ public abstract class BaseLambda<TCommand, TResponse>
             }
 
             watch.Stop();
-            Log.Logger.Information("End process {Time}", watch.ElapsedMilliseconds);
+            Log.Logger.Information("End process execution {TotalTime} and {TimeAverage} by request", watch.ElapsedMilliseconds, watch.ElapsedMilliseconds / @event.Records.Count);
+            
         }
     }
 
@@ -54,10 +55,11 @@ public abstract class BaseLambda<TCommand, TResponse>
     {
         try
         {
-            using (var scope = _container.ServiceProvider.CreateAsyncScope())
-            {
-                var command = GetCommand(message);
+            var command = GetCommand(message);
 
+            using (var scope = _container.ServiceProvider.CreateAsyncScope())
+            using (LogContext.PushProperty("EventId", GetEventId(command)))
+            {
                 var commandHandler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand, TResponse>>();
                 var response = await commandHandler.ExecuteAsync(command);
             }
@@ -71,5 +73,10 @@ public abstract class BaseLambda<TCommand, TResponse>
     protected virtual TCommand GetCommand(SQSMessage message)
     {
         return JsonConvert.DeserializeObject<TCommand>(message.Body)!;
+    }
+
+    protected virtual string GetEventId(TCommand command)
+    {
+        return Guid.NewGuid().ToString();
     }
 }

@@ -6,6 +6,7 @@ namespace SimpleTicket.Domain.Core.Entities
     {
         public Activity(string note, DateTime createdAt, Guid ticketId)
         {
+            Id = Guid.NewGuid();
             Note = note;
             CreatedAt = createdAt;
             TicketId = ticketId;
@@ -13,6 +14,7 @@ namespace SimpleTicket.Domain.Core.Entities
 
         public Activity(string note)
         {
+            Id = Guid.NewGuid();
             Note = note;
             CreatedAt = DateTime.UtcNow;
         }
