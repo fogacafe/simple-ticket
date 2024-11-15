@@ -12,12 +12,16 @@ namespace SimpleTicket.Infrastructure.Cache.InMemory
             _cache = MemoryCache.Default;
         }
 
-        public Task DeleteAsync(string key)
+        public Task<bool> DeleteAsync(string key)
         {
-            return Task.Run(() => _cache.Remove(key));
+            return Task.Run(() =>
+            {
+                _cache.Remove(key);
+                return true;
+            });
         }
 
-        public Task SaveOrUpdateAsync<T>(T value, string key, TimeSpan? expiry = null)
+        public Task<bool> SaveOrUpdateAsync<T>(T value, string key, TimeSpan? expiry = null)
         {
             return Task.Run(() =>
             {
@@ -27,6 +31,8 @@ namespace SimpleTicket.Infrastructure.Cache.InMemory
                 {
                     policy.AbsoluteExpiration = DateTimeOffset.Now.Add(expiry.Value);
                 }
+
+                return true;
             });
         }
 

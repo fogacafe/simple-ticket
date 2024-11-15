@@ -41,7 +41,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cache", "Cache", "{8B9673E8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTicket.Infrastructure.Cache.Interfaces", "Source\Infrastructure\CrossCutting\Cache\SimpleTicket.Infrastructure.Cache.Interfaces\SimpleTicket.Infrastructure.Cache.Interfaces.csproj", "{8A26EC7E-5927-47BD-8B9A-85AAFB32AC6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTicket.Infrastructure.Cache.InMemory", "Source\Infrastructure\CrossCutting\Cache\SimpleTicket.Infrastructure.Cache.InMemory\SimpleTicket.Infrastructure.Cache.InMemory.csproj", "{477EF238-322F-4879-8388-2E63E45C71C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTicket.Infrastructure.Cache.InMemory", "Source\Infrastructure\CrossCutting\Cache\SimpleTicket.Infrastructure.Cache.InMemory\SimpleTicket.Infrastructure.Cache.InMemory.csproj", "{477EF238-322F-4879-8388-2E63E45C71C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTicket.Infrastructure.Cache.Redis", "Source\Infrastructure\CrossCutting\Cache\SimpleTicket.Infrastructure.Cache.Redis\SimpleTicket.Infrastructure.Cache.Redis.csproj", "{EE97A6CD-B031-47EF-9F8D-A3E6FB6210FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{477EF238-322F-4879-8388-2E63E45C71C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{477EF238-322F-4879-8388-2E63E45C71C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{477EF238-322F-4879-8388-2E63E45C71C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE97A6CD-B031-47EF-9F8D-A3E6FB6210FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE97A6CD-B031-47EF-9F8D-A3E6FB6210FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE97A6CD-B031-47EF-9F8D-A3E6FB6210FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE97A6CD-B031-47EF-9F8D-A3E6FB6210FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{8B9673E8-6011-45F4-B471-BD2CC6AEEAFF} = {B15C1B2C-0F64-4781-B893-E46734B77FDC}
 		{8A26EC7E-5927-47BD-8B9A-85AAFB32AC6A} = {8B9673E8-6011-45F4-B471-BD2CC6AEEAFF}
 		{477EF238-322F-4879-8388-2E63E45C71C8} = {8B9673E8-6011-45F4-B471-BD2CC6AEEAFF}
+		{EE97A6CD-B031-47EF-9F8D-A3E6FB6210FB} = {8B9673E8-6011-45F4-B471-BD2CC6AEEAFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F6A0234-A624-4703-A19F-82FD7937E977}

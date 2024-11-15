@@ -3,8 +3,8 @@
     public interface ICacheService
     {
 
-        Task SaveOrUpdateAsync<T>(T value, string key, TimeSpan? expire = null);
+        Task<bool> SaveOrUpdateAsync<T>(T value, string key, TimeSpan? expiry = null);
         Task<T?> TryGetValueAsync<T>(string key);
-        Task DeleteAsync(string key);
+        Task<bool> DeleteAsync(string key);
     }
 }
