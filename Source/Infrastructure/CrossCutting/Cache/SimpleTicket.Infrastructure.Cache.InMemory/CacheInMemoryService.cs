@@ -19,24 +19,28 @@ namespace SimpleTicket.Infrastructure.Cache.InMemory
 
         public Task SaveOrUpdateAsync<T>(T value, string key, TimeSpan? expiry = null)
         {
-            var policy = new CacheItemPolicy();
-
-            if (expiry.HasValue)
+            return Task.Run(() =>
             {
-                policy.AbsoluteExpiration = DateTimeOffset.Now.Add(expiry.Value);
-            }
+                var policy = new CacheItemPolicy();
 
-            return Task.Run(() => _cache.Set(key, value, policy));
+                if (expiry.HasValue)
+                {
+                    policy.AbsoluteExpiration = DateTimeOffset.Now.Add(expiry.Value);
+                }
+            });
         }
 
-        public async Task<T?> TryGetValueAsync<T>(string key)
+        public Task<T?> TryGetValueAsync<T>(string key)
         {
-            var value = await Task.Run(() => _cache.Get(key));
+            return Task.Run(() =>
+            {
+                var value = _cache.Get(key);
 
-            if (value != null && value is T)
-                return (T)value;
+                if (value != null && value is T)
+                    return (T)value;
 
-            return default;
+                return default;
+            });
         }
     }
 }
